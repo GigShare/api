@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "In this api all artist will be saved and groups/interests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GigShare/api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GigShare/api/issues"
+  },
+  "homepage": "https://github.com/GigShare/api#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

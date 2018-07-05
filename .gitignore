@@ -5,6 +5,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+.DS_Store
+node_modules
+.vscode
+symbols.json
+.idea
+
 # Runtime data
 pids
 *.pid
