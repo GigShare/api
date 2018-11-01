@@ -1,5 +1,16 @@
 const express = require('express');
 const app = express()
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const spotify = require('./utils/spotify');
+
+console.log(spotify.getArtist());
+
+//setup connection with server
+ mongoose.connect('mongodb://localhost/artistApi');
+ mongoose.Promise = global.Promise;
+
+app.use(bodyParser.json());
 //get all the routes
 const artistRoute = require('./routes/artists');
 const genresRoutes = require('./routes/genresRoute');
@@ -47,8 +58,4 @@ app.get('/', function(req, res){
     });
 });
 
-app.listen(process.env.PORT || 8000, () => {
-	console.info(`API server is listining on port 8000`)
-})
-
-module.exports = app;
+module.exports = app
