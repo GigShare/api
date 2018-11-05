@@ -4,6 +4,7 @@ In this api all artist will be saved and groups/interests
 
 #TODO
 ~Refracter code so Controllers work with it
+~Write code to get token from spotify
 ~Get artist from spotify api    
     -Check if the artist exist in spotify
     -Save the id of the artist 
