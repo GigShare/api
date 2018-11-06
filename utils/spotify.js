@@ -6,20 +6,28 @@ module.exports = {
     getArtist: function(nameArtist) {  
         //check for spaces in artists name!
         //regex!
-        fetch('https://api.spotify.com/v1/search', {
-        method: 'POST', // or 'PUT'
+        fetch('https://api.spotify.com/v1/search?q=slaves&type=artist', {
+        method: 'GET', // or 'PUT'
         headers:{
-          'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + config.spotifyKey, 
-        },
-        params:{
-            'q' : 'papa%20roach',
-            'type' : 'artist'
         }
-          }).then(res => res.json())
-          .then(response => console.log('Success:', JSON.stringify(response)))
-          .catch(error => console.error('Error:', error)); 
+        }).then((res) => {
+            if(res.status === 401){
+                this.getNewToken();
+            return;
+            }else{
+                return res.json();
+            }
+        })
+        .then((response) => {
+             //if error code is
+            console.log('Success:', JSON.stringify(response))
+        })
+        .catch(error => console.error('Error:', error)); 
 
         return config.spotifyKey;
+    },
+    getNewToken: function(){
+        console.log('here i will get a new token');
     }
 }
