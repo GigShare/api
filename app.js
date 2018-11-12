@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const spotify = require('./utils/spotify');
 
-console.log(spotify.getArtist());
+console.log(spotify.checkArtist('Slaves'));
 
 //setup connection with server
- mongoose.connect('mongodb://localhost/artistApi');
+ mongoose.connect('mongodb://localhost/gigShareApi');
  mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
