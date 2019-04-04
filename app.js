@@ -7,8 +7,8 @@ const spotify = require('./utils/spotify');
 console.log(spotify.checkArtist('Slaves'));
 
 //setup connection with server
- mongoose.connect('mongodb://localhost/gigShareApi');
- mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/gigShareApi');
+mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
 //get all the routes

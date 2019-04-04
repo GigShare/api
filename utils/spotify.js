@@ -18,13 +18,9 @@ module.exports = {
             }else{
                 return res.json();
             }
-        })
-        .then((response) => {
-             //if error code is
-            
+        }).then((response) => {
             console.log('Success:', JSON.stringify(response))
-        })
-        .catch(error => console.error('Error:', error)); 
+        }).catch(error => console.error('Error:', error)); 
     },
     getAuthorization : function(artist){
         console.log(artist + ' here i will get a new token');
