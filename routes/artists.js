@@ -20,10 +20,10 @@ router.post("/", (req, res, next) => {
 //return artist based on id
 router.get("/:artistId", (req, res, next) => {
     //you get the id from using the req.params.{id name in url}
+    //find artist on id
     const id = req.params.artistId;
-    res.status(200).json({
-        id: id,
-        message: "it worked"
+    Artist.findOne({ _id: id }, (err, artist) => {
+        res.status(201).send(artist);
     });
 });
 
