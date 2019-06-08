@@ -20,27 +20,27 @@ app.use("/artists", artistRoute);
 app.use("/genres", genresRoutes);
 //show endpoints when on homepage
 app.get("/", function(req, res) {
-  res.status(200).json({
-    message: "it works!",
-    endPoints: [
-      {
-        method: "GET",
-        endPoints: ["/artists", "/artists/{id}", "/genres", "genres/{id}"]
-      },
-      {
-        method: "POST",
-        endPoints: ["/artists", "/genres", "/genres/{id}"]
-      },
-      {
-        method: "Delete",
-        endPoints: ["/artists/{id}", "/genres/{id}"]
-      },
-      {
-        method: "PUT",
-        endPoints: ["/artists/{id}"]
-      }
-    ]
-  });
+    res.status(200).json({
+        message: "it works!",
+        endPoints: [
+            {
+                method: "GET",
+                endPoints: ["/artists", "/artists/{id}", "/genres", "genres/{id}"]
+            },
+            {
+                method: "POST",
+                endPoints: ["/artists", "/genres", "/genres/{id}"]
+            },
+            {
+                method: "Delete",
+                endPoints: ["/artists/{id}", "/genres/{id}"]
+            },
+            {
+                method: "PUT",
+                endPoints: ["/artists/{id}"]
+            }
+        ]
+    });
 });
 
 module.exports = app;
