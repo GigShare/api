@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Artist = require('../models/artistModel');
-//handling get request for /artists
+//handling get request for /artists and send back all artist
 router.get('/', (req, res , next) =>{
-    res.status(200).json({
-        message: 'GET REQUEST'
+    Artist.find({}, (err, artists) => {
+        res.status(200).send(artists);
     });
 });
 
