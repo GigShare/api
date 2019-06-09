@@ -13,7 +13,7 @@ router.get('/:userid', (req,res,next) => {
 });
 
 //add artist id to user artist id => Spotify id
-router.post('/', (req,res,next) => {
+router.post('/:userid', (req,res,next) => {
     const userid = req.params.userid;  
 
     //find user to update
@@ -26,7 +26,7 @@ router.post('/', (req,res,next) => {
     }
 });
 //remove user
-router.delete('/', (req, res, next) => {
+router.delete('/:userid', (req, res, next) => {
     const userid = req.params.userid;
 
     User.remove({ _id : userid}, (err) => {
@@ -38,7 +38,7 @@ router.delete('/', (req, res, next) => {
     })
 });
 //remove artists id form user
-router.delete('/:artistid', (req, res, next) => {
+router.delete('/:userid/:artistid', (req, res, next) => {
     User.findOne({ _id: req.params.userid }, (err, user) => {
         if(user.artistsID.indexOf(req.params.artistid) > -1) {
             user.artistsID.splice(user.artistsID.indexOf(210), 1);

@@ -1,10 +1,10 @@
 //here all the shit for users are gonna move
 const express = require("express");
 const router = express.Router();
-const User = require("../models/userModel");
 const app = require('../app');
+const User = require("../models/userModel");
 //handling get request for /artists and send back all artist
-router.get("/", (req, res, next) => {
+router.get('/', (req, res, next) => {
     User.find({}, (err, artists) => {
         res.status(200).send(artists);
     });
@@ -13,10 +13,8 @@ router.get("/", (req, res, next) => {
 //creating a user 
 router.post('/', (req, res, next) => {
     const user = new User(req.body);
-
-    if(req.body.username){
+    if ( req.body.username ){
         user.save(e => {
-            user.artistsID = []
             user.save();
             res.status(201).send('User has been created');
         });
