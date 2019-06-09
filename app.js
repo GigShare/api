@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+const app = module.exports = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
@@ -11,13 +11,14 @@ app.use(bodyParser.json());
 //get all the routes
 const artistRoute = require("./routes/artists");
 const genresRoutes = require("./routes/genresRoute");
-const userRoutes = require('./routes/userRoute');
+const usersRoutes = require('./routes/usersRoute');
 //when you search for /artist handle response in artist router
 app.use("/artists", artistRoute);
 //handling genres route
 app.use("/genres", genresRoutes);
 //handling shit for users by it self
-app.use('/users', userRoutes);
+app.use('/users', usersRoutes);
+
 //show endpoints when on homepage
 app.get("/", function(req, res) {
     res.status(200).json({
