@@ -2,15 +2,10 @@ var mongoose = require('mongoose'),
     schema = mongoose.Schema;
 
 var usermodel = new schema({
-    name:{
+    username:{
         type: String 
     },
-    password:{
-        type: String 
-    },
-    artistsID : {
-        type: String
-    }
+    artistsID : []
 });
 
 module.exports = mongoose.model('User', usermodel);
