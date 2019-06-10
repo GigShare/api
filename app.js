@@ -9,7 +9,7 @@ mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
 //get all the routes
-const artistRoute = require("./routes/artists");
+const artistRoute = require("./routes/artistsRoute");
 const genresRoutes = require("./routes/genresRoute");
 const usersRoutes = require('./routes/usersRoute');
 //when you search for /artist handle response in artist router
