@@ -1,7 +1,7 @@
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
     schema = mongoose.Schema;
 
-var artistModel = new schema({
+const artistModel = new schema({
     title:{
         type: String,
         required: true

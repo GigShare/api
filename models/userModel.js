@@ -1,9 +1,10 @@
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
     schema = mongoose.Schema;
 
-var usermodel = new schema({
+const usermodel = new schema({
     username:{
-        type: String 
+        type: String,
+        required: true
     },
     artistsID : []
 });
