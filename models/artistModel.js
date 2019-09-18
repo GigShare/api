@@ -3,10 +3,12 @@ var mongoose = require('mongoose'),
 
 var artistModel = new schema({
     title:{
-        type: String 
+        type: String,
+        required: true
     },
     genre:{
-        type:String 
+        type:String,
+        required: true
     }
 });
 
