@@ -13,9 +13,15 @@ router.get('/', (req, res, next) => {
 //creating a user 
 router.post('/', (req, res, next) => {
     const user = new User(req.body);
-    if ( req.body.username ){
-        user.save(e => {
-            user.save();
+
+    user.validate(error => {
+        if (error) {
+            //check for error
+            console.log("there is a error");
+        } else {
+            // no error save the object
+            user.save(e => {
+                user.save();
             res.status(201).send('User has been created');
         });
     }else{
