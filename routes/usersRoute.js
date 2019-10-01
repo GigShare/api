@@ -23,7 +23,7 @@ router.post("/", (req, res, next) => {
             user.save(e => {
                 user.save();
                 res.status(201).send("User has been created");
-            }).catch(e => console.log(e));
+            });
         }
     });
 });
