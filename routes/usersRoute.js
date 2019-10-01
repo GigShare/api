@@ -3,10 +3,12 @@ const express = require("express");
 const router = express.Router();
 const app = require("../app");
 const User = require("../models/userModel");
+const testing = require("../controllers/cotroller");
 //handling get request for /artists and send back all artist
 router.get("/", (req, res, next) => {
     User.find({}, (err, artists) => {
         res.status(200).send(artists);
+        testing.testing(req, res);
     });
 });
 
