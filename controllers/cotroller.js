@@ -1,4 +1,3 @@
-
-exports.testing = (req, res) =>  {
+exports.testing = (req, res) => {
     console.log(req);
-}
+};

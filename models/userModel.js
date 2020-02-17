@@ -1,4 +1,4 @@
-const mongoose = require("mongoose"),
+const mongoose = require('mongoose'),
     schema = mongoose.Schema;
 
 const usermodel = new schema({
@@ -9,4 +9,4 @@ const usermodel = new schema({
     artistsID: []
 });
 
-module.exports = mongoose.model("User", usermodel);
+module.exports = mongoose.model('User', usermodel);
