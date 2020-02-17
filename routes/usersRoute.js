@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
 });
 
 //use different file if it user specific
-const userRoute = require('./detailUsersRoute');
+const userRoute = require('./personalizeUserRoute');
 app.use('/:userid', userRoute);
 
 module.exports = router;
