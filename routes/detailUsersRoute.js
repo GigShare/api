@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel');
-const userController = require('../controllers/userTask/user');
+const userController = require('../controllers/userTask/user'); // Controller for basic detail User interaction
 
 // get user
 router.get('/:userid', (req, res, next) => {
