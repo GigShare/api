@@ -13,3 +13,25 @@ exports.addArtistToUser = (req, res) => {
         res.status(400).send('There is no artistid. Check the body your posting with.');
     }
 };
+
+exports.deletUser = (req, res) => {
+    const userid = req.params.userid;
+
+    User.remove({ _id: userid }, err => {
+        if (!err) {
+            res.status(204).send('User is gone');
+        } else {
+            res.status(400).send(err);
+        }
+    });
+};
+
+exports.deleteArtistFromUser = (req, res) => {
+    User.findOne({ _id: req.params.userid }, (err, user) => {
+        if (user.artistsID.indexOf(req.params.artistid) > -1) {
+            user.artistsID.splice(user.artistsID.indexOf(210), 1);
+            user.save();
+            res.status(202).send('Deleted that boi');
+        }
+    });
+};
