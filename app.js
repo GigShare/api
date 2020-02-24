@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 //setup connection with server
-mongoose.connect('mongodb://localhost/gigShareApi', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/gigShareApi', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
