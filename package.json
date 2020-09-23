@@ -18,6 +18,7 @@
   "homepage": "https://github.com/GigShare/api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^8.2.0",
     "es6-promise": "^4.2.5",
     "express": "^4.16.3",
     "isomorphic-fetch": "^2.2.1",

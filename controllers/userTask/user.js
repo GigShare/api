@@ -7,7 +7,7 @@ exports.addArtistToUser = (req, res) => {
             user.artistsID.push(req.body.artistid);
             user.save();
             res.status(202).send('Artist has been added');
-        }).catch(e => res.status(404).send('User is not found'));
+        }).catch((e) => res.status(404).send('User is not found'));
     } else {
         // catch the fact that artistid is not filled in
         res.status(400).send('There is no artistid. Check the body your posting with.');
@@ -17,7 +17,7 @@ exports.addArtistToUser = (req, res) => {
 exports.deletUser = (req, res) => {
     const userid = req.params.userid;
 
-    User.remove({ _id: userid }, err => {
+    User.remove({ _id: userid }, (err) => {
         if (!err) {
             res.status(204).send('User is gone');
         } else {
