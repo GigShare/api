@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
 //creating a user
 router.post('/', (req, res, next) => {
     getSpotifyDetail(res, req.body.accesToken).then((spotifyUser) => {
+        console.log(spotifyUser);
         const userSpotify = new User({ username: spotifyUser.display_name });
         // Check if user exist
         User.findOne({ username: spotifyUser.display_name }, (err, user) => {
@@ -24,7 +25,7 @@ router.post('/', (req, res, next) => {
                 // add user to DB
                 userSpotify.save((e) => {
                     userSpotify.save();
-                    res.status(201).json({ existing: false, userData: user });
+                    res.status(201).json({ existing: false, userData: userSpotify });
                 });
             }
         });
