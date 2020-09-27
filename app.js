@@ -3,10 +3,10 @@ const app = (module.exports = express());
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
 //setup connection with server
-mongoose.connect('mongodb://localhost/gigShareApi', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/gigShareApi', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());

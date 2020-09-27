@@ -1,5 +1,6 @@
 //here all the shit for users are gonna move
 const express = require('express');
+const { getSpotifyDetail } = require('../../controllers/userTask/user');
 const router = express.Router({ mergeParams: true });
 const User = require('../../models/userModel');
 
@@ -12,19 +13,21 @@ router.get('/', (req, res, next) => {
 
 //creating a user
 router.post('/', (req, res, next) => {
-    const user = new User(req.body);
-    user.validate((error) => {
-        if (error) {
-            //check for error
-            const errMessage = error.errors.username.message;
-            res.status(401).send(errMessage);
-        } else {
-            // no error save the object
-            user.save((e) => {
-                user.save();
-                res.status(201).send('User has been created');
-            });
-        }
+    getSpotifyDetail(res, req.body.accesToken).then((spotifyUser) => {
+        const userSpotify = new User({ username: spotifyUser.display_name });
+        // Check if user exist
+        User.findOne({ username: spotifyUser.display_name }, (err, user) => {
+            if (user) {
+                // Send back the data of the user
+                res.status(201).json({ existing: true, userData: user });
+            } else {
+                // add user to DB
+                userSpotify.save((e) => {
+                    userSpotify.save();
+                    res.status(201).json({ existing: false, userData: user });
+                });
+            }
+        });
     });
 });
 

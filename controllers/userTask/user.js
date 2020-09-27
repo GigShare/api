@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 exports.addArtistToUser = (req, res) => {
     const userid = req.params.userid;
     console.log(typeof req.body.artistid);
@@ -34,4 +36,21 @@ exports.deleteArtistFromUser = (req, res) => {
             res.status(202).send('Deleted that boi');
         }
     });
+};
+
+exports.getSpotifyDetail = async (res, accesToken) => {
+    const headerString = 'Bearer ' + accesToken;
+    const result = await fetch('https://api.spotify.com/v1/me', {
+        headers: { Authorization: headerString },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((e) => {
+            console.log(error);
+            res.status(500).send('error with spotify: ' + e);
+        });
+
+    return result;
 };
