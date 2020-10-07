@@ -16,7 +16,7 @@ router.post('/', (req, res, next) => {
     getSpotifyDetail(res, req.body.accesToken).then((spotifyUser) => {
         console.log(spotifyUser);
 
-        const userSpotify = new User({ username: spotifyUser.display_name });
+        const userSpotify = new User({ username: spotifyUser.display_name, profileImage: spotifyUser.images[0].url });
         // Check if user exist
         User.findOne({ username: spotifyUser.display_name }, (err, user) => {
             if (user) {
@@ -24,6 +24,7 @@ router.post('/', (req, res, next) => {
                 res.status(201).json({ existing: true, userData: user });
             } else {
                 // add user to DB
+
                 userSpotify.save((e) => {
                     userSpotify.save();
                     res.status(201).json({ existing: false, userData: userSpotify });

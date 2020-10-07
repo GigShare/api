@@ -4,8 +4,12 @@ const mongoose = require('mongoose'),
 const usermodel = new schema({
     username: {
         type: String,
-        required: true
-    }
+        required: true,
+    },
+    profileImage: {
+        type: String,
+    },
+    groupsIds: [],
 });
 
 module.exports = mongoose.model('User', usermodel);
