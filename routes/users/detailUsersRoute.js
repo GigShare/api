@@ -6,7 +6,6 @@ const userController = require('../../controllers/userTask/user'); // Controller
 
 // get user
 router.get('/', (req, res, next) => {
-    console.log('test');
     const userid = req.params.userid;
     User.findOne({ _id: userid }, (err, user) => {
         res.status(200).send(user);

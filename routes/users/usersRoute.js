@@ -15,6 +15,7 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
     getSpotifyDetail(res, req.body.accesToken).then((spotifyUser) => {
         console.log(spotifyUser);
+
         const userSpotify = new User({ username: spotifyUser.display_name });
         // Check if user exist
         User.findOne({ username: spotifyUser.display_name }, (err, user) => {
