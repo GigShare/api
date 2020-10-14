@@ -10,6 +10,7 @@ const usermodel = new schema({
         type: String,
     },
     groupsIds: [],
+    personalArtist: [],
 });
 
 module.exports = mongoose.model('User', usermodel);
