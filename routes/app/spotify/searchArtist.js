@@ -15,7 +15,6 @@ router.post('/', (req, res, next) => {
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
         res.status(200).send(data)
     })
 });
