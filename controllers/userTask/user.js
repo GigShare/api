@@ -36,9 +36,11 @@ exports.deletUser = (req, res) => {
 exports.deleteArtistFromUser = (req, res) => {
     User.findOne({ _id: req.params.userid }, (err, user) => {
         if (user.artistsID.indexOf(req.params.artistid) > -1) {
-            user.artistsID.splice(user.artistsID.indexOf(210), 1);
+            user.artistsID.remove(req.params.artistid);
             user.save();
-            res.status(202).send('Deleted that boi');
+            res.status(202).send({ success: 'Deleted that boi' });
+        } else {
+            res.status(404).send({ error: 'artist not here' });
         }
     });
 };
