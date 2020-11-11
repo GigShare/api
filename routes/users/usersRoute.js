@@ -24,7 +24,6 @@ router.post('/', (req, res, next) => {
                 res.status(201).json({ existing: true, userData: user });
             } else {
                 // add user to DB
-
                 userSpotify.save((e) => {
                     userSpotify.save();
                     res.status(201).json({ existing: false, userData: userSpotify });

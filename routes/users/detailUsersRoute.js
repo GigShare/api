@@ -12,13 +12,14 @@ router.get('/', (req, res, next) => {
     });
 });
 
-//add artist id to user artist id => Spotify id
-router.post('/', (req, res, next) => {
-    userController.addArtistToUser(req, res);
-});
 //remove user
 router.delete('/', (req, res, next) => {
     userController.deletUser(req, res);
+});
+
+//add artist id to user artist id => Spotify id
+router.post('/', (req, res, next) => {
+    userController.addArtistToUser(req, res);
 });
 //remove artists id form user
 router.delete('/:artistid', (req, res, next) => {

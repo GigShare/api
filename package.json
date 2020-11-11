@@ -4,7 +4,8 @@
   "description": "In this api all artist will be saved and groups/interests",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
     "isomorphic-fetch": "^2.2.1",
     "mongoose": "^5.9.1",
     "node-fetch": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
