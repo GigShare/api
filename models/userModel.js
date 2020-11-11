@@ -10,7 +10,7 @@ const usermodel = new schema({
         type: String,
     },
     groupsIds: [],
-    personalArtists: [],
+    artistsID: [],
 });
 
 module.exports = mongoose.model('User', usermodel);

@@ -7,8 +7,8 @@ exports.addArtistToUser = (req, res) => {
     //find user to update
     if (req.body.artistid) {
         User.findOne({ _id: userid }, (err, user) => {
-            if (!user.personalArtists.includes(req.body.artistid)) {
-                user.personalArtists.push(req.body.artistid);
+            if (!user.artistsID.includes(req.body.artistid)) {
+                user.artistsID.push(req.body.artistid);
                 user.save();
                 res.status(202).send({ success: 'artist added' });
             } else {
