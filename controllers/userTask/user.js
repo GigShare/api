@@ -61,3 +61,16 @@ exports.getSpotifyDetail = async (res, accesToken) => {
 
     return result;
 };
+
+exports.getConcertUsers = (req, res) => {
+    User.findOne({ _id: '5fc7976cce079b36b258c1e2' })
+        .then((user) => {
+            user.artistsID.forEach((artistIdSpotify) => {
+                console.log(artistIdSpotify);
+                // get name artist
+                // search at ticket master
+            });
+            res.status(202).send('got the user');
+        })
+        .catch((error) => res.status(500).send(error));
+};
