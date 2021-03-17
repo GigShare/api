@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const User = require('../../models/userModel');
+const spotifyController = require('../spotify/spotifyController');
 
 exports.addArtistToUser = (req, res) => {
     const userid = req.params.userid;
@@ -65,12 +66,16 @@ exports.getSpotifyDetail = async (res, accesToken) => {
 exports.getConcertUsers = (req, res) => {
     User.findOne({ _id: '5fc7976cce079b36b258c1e2' })
         .then((user) => {
-            user.artistsID.forEach((artistIdSpotify) => {
-                console.log(artistIdSpotify);
-                // get name artist
-                // search at ticket master
+            user.artistsID.slice(req.params.skipRate, parseInt(req.params.skipRate) + 5).forEach((artistIdSpotify) => {
+                // First get name artist at spotify api
+                spotifyController.GetArtistName(artistIdSpotify);
+
+                // Go to ticket master and look for date
+                // Add data to object
+                // Add object to array
             });
-            res.status(202).send('got the user');
+
+            res.status(202).json({ success: true });
         })
         .catch((error) => res.status(500).send(error));
 };

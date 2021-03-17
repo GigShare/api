@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     res.status(202).send({ working: true });
 });
 
-router.post('/user', (req, res, next) => {
+router.post('/user/:skipRate', (req, res, next) => {
     userController.getConcertUsers(req, res);
 });
 
