@@ -64,11 +64,11 @@ exports.getSpotifyDetail = async (res, accesToken) => {
 };
 
 exports.getConcertUsers = (req, res) => {
-    User.findOne({ _id: '5fc7976cce079b36b258c1e2' })
+    User.findOne({ _id: req.body.userId })
         .then((user) => {
             user.artistsID.slice(req.params.skipRate, parseInt(req.params.skipRate) + 5).forEach((artistIdSpotify) => {
                 // First get name artist at spotify api
-                spotifyController.GetArtistName(artistIdSpotify);
+                spotifyController.GetArtistName(artistIdSpotify, req.body.spotifyToken);
 
                 // Go to ticket master and look for date
                 // Add data to object
