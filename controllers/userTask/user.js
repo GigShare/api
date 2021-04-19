@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const User = require('../../models/userModel');
 const spotifyController = require('../spotify/spotifyController');
+const concertController = require('../concertController/concertController');
+9;
 
 exports.addArtistToUser = (req, res) => {
     const userid = req.params.userid;
@@ -66,13 +68,18 @@ exports.getSpotifyDetail = async (res, accesToken) => {
 exports.getConcertUsers = (req, res) => {
     User.findOne({ _id: req.body.userId })
         .then((user) => {
+            // !!!TODO this whole function will move to controllor later !!!
+            // So it will just work like shown here below
+            // getConcertData({arrayOfArtist}, skipRate).then((concerts) => { res.status(202).json(concerts) })
             user.artistsID.slice(req.params.skipRate, parseInt(req.params.skipRate) + 5).forEach((artistIdSpotify) => {
                 // First get name artist at spotify api
-                spotifyController.GetArtistName(artistIdSpotify, req.body.spotifyToken);
-
-                // Go to ticket master and look for date
-                // Add data to object
-                // Add object to array
+                spotifyController.GetArtistName(artistIdSpotify, req.body.spotifyToken).then((artist) => {
+                    // Go to ticket master and look for date
+                    concertController.getConcertData(artist.name);
+                    // Add data to object
+                    // Add object to array
+                    // send back
+                });
             });
 
             res.status(202).json({ success: true });
